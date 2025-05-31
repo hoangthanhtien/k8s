@@ -20,7 +20,7 @@ spec:
           service:
             name: thdblog-service
             port:
-              number: https
+              number: 80
   tls:
   - hosts:
     - wiki.polodev.com
