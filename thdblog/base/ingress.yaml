@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: thdblog-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: / # For some NGINX versions
+spec:
+  ingressClassName: nginx # Important: specifies to use the NGINX Ingress Controller
+  rules:
+  - host: wiki.polodev.com # Replace with your actual domain or use a test domain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: react-app-service
+            port:
+              number: 80
