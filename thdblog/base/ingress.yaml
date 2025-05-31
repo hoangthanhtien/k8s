@@ -24,4 +24,4 @@ spec:
   tls:
   - hosts:
     - wiki.polodev.com
-    secretName: argocd-server-tls # as expected by argocd-server
+    secretName: wiki-polodev-tls # as expected by argocd-server
