@@ -7,10 +7,10 @@ metadata:
 spec:
   ingressClassName: nginx # Important: specifies to use the NGINX Ingress Controller
   rules:
-  - host: wiki.polodev.com # Replace with your actual domain or use a test domain
+  - host: polodev.com # Replace with your actual domain or use a test domain
     http:
       paths:
-      - path: /
+      - path: /blog
         pathType: Prefix
         backend:
           service:
