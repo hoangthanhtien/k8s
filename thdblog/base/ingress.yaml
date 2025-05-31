@@ -14,6 +14,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: react-app-service
+            name: thdblog-service
             port:
               number: 80
