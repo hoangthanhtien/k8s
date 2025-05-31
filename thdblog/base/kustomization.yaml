@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# List of resource files to include
+resources:
+- deployment.yaml
+- service.yaml
+# - configmap.yaml
+
+images:
+- name: YOUR_ECR_REPOSITORY_URI # The placeholder used in deployment.yaml
+  newName: 724772052990.dkr.ecr.ap-southeast-1.amazonaws.com/tienhoangdevblog # Your full ECR repository URI (e.g., 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-react-app)
+  newTag: 198dce8 # Or a specific tag. This can be overridden in overlays.

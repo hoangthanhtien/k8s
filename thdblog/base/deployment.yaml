@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thdblog-deployment
+  labels:
+    app: thdblog-react
+spec:
+  replicas: 1 # Default replica count
+  selector:
+    matchLabels:
+      app: thdblog-react
+  template:
+    metadata:
+      labels:
+        app: thdblog-react
+    spec:
+      containers:
+      - name: thdblog-react
+        image: YOUR_ECR_REPOSITORY_URI:YOUR_IMAGE_TAG
+        ports:
+        - containerPort: 80 
+      imagePullSecrets: 
+      - name: ecr-registry-secret
