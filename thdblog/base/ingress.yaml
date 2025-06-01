@@ -4,8 +4,8 @@ metadata:
   name: thdblog-ingress
   namespace: argocd
   annotations:
-    # cert-manager.io/cluster-issuer: letsencrypt-prod
-    cert-manager.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    # cert-manager.io/cluster-issuer: letsencrypt-staging
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
