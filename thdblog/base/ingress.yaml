@@ -1,27 +1,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: tienhoangdevblog:networking.k8s.io/Ingress:argocd/thdblog-ingress
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   name: thdblog-ingress
   namespace: argocd
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    # cert-manager.io/cluster-issuer: letsencrypt-staging
-    nginx.ingress.kubernetes.io/ssl-passthrough: "false"
-    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
-  ingressClassName: nginx # Important: specifies to use the NGINX Ingress Controller
+  ingressClassName: nginx
   rules:
-  - host: wiki.polodev.com # Replace with your actual domain or use a test domain
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: thdblog-service
-            port:
-              number: 80
+    - host: wiki.polodev.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: thdblog-service
+                port:
+                  number: 80 # Nginx handles SSL, forwards HTTP to service
+            path: /
+            pathType: Prefix
   tls:
-  - hosts:
-    - wiki.polodev.com
-    secretName: wiki-polodev-tls # as expected by argocd-server
+    - hosts:
+        - wiki.polodev.com
+      secretName: wiki-polodev-tls # Cert-Manager will create/update this
